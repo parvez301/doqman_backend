@@ -37,9 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # rest cors support
+    'corsheaders',
 
     'users',
-    'cors',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +145,7 @@ SITE_ID = 1
 
 ## User Authentication Settings
 
-ACCOUNT_ADAPTER = 'user_profile.adapter.MyAccountAdapter'
+ACCOUNT_ADAPTER = 'uses.adapter.MyAccountAdapter'
 # Following is added to enable registration with email instead of username
 AUTHENTICATION_BACKENDS = (
  # Needed to login by username in Django admin, regardless of `allauth`
@@ -144,7 +156,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'user_profile.serializers.UserSerializer'
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
 }
 
 REST_SESSION_LOGIN = False
